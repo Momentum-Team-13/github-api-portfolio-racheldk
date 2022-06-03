@@ -86,6 +86,20 @@ fetch("https://api.github.com/users/racheldk", {
             console.log("got the repo data from the API")
             console.log(data)
             //do a bunch of functions
+            addRepo(data)
         })
 
-        
+function addRepo(repoData){
+    repoNameArray = repoData.map(function (repo){
+        repoList.appendChild(makeRepoEl(repo.name))
+    })
+}
+
+function makeRepoEl(repoName) {
+    let repoEl = document.createElement('a')
+    repoEl.classList.add("ph3", "pv3", "bb", "b--light-silver")
+    repoEl.innerText = `${repoName}`
+    repoEl.href = repoName
+    console.log(repoName)
+    return repoEl
+}
