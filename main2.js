@@ -18,6 +18,8 @@ fetch("https://api.github.com/users/racheldk", {
         addName(data)
         addAvatar(data)
         addLocation(data)
+        addGitUrl(data)
+        addUserName(data)
     })
     
     //function to add name to header
@@ -25,6 +27,7 @@ fetch("https://api.github.com/users/racheldk", {
         let nameEl = document.createElement('h1')
         nameEl.classList.add("f4")
         nameEl.innerText = `${data.name}`
+        console.log("addName")
         heading.appendChild(nameEl)
     }
 
@@ -34,6 +37,7 @@ fetch("https://api.github.com/users/racheldk", {
         avatarEl.classList.add("br-100", "h4", "w4", "dib")
         avatarEl.src = data.avatar_url
         avatarEl.alt = `${data.name}'s avatar`
+        console.log("addAvatar")
         heading.appendChild(avatarEl)
     }
 
@@ -41,29 +45,35 @@ fetch("https://api.github.com/users/racheldk", {
     function addLocation(data) {
         let locationEl = document.createElement('p')
         locationEl.classList.add("lh-copy", "measure", "center", "f6", "black-70")
-        locationEl.innerText = `${data.location}`
+        locationEl.innerText = `Location: ${data.location}`
+        console.log("addLocation")
         contact.appendChild(locationEl)
     }
     
     //function to add GitHub url to contact 
-    
+    function addGitUrl(data) {
+        let gitUrlEl = document.createElement('a')
+        gitUrlEl.classList.add("lh-copy", "measure", "center", "f6", "black-70")
+        gitUrlEl.innerText = `GitHub url: ${data.url}`
+        gitUrlEl.href = data.url
+        console.log("addGitUrl")
+        contact.appendChild(gitUrlEl)
+    }
     
     //function to GitHub username to contact 
-    
-    
-    //add header to page 
-    
-    
-    //add contact to page 
-    
+    function addUserName(data) {
+        let userNameEl = document.createElement('p')
+        userNameEl.classList.add("lh-copy", "measure", "center", "f6", "black-70")
+        userNameEl.innerText = `GitHub username: ${data.login}`
+        console.log("addUserName")
+        contact.appendChild(userNameEl)
+    }
     
     //function to add repos to repo_list ul 
-    
-    
     //add all of the functions to the fetch 
     
-    
-    //just do one fetch from the repos url
+
+    //fetch the repo array from the repos url
     repoUrl = "https://api.github.com/users/racheldk/repos"
     fetch(repoUrl, {
         method: "GET",
@@ -77,3 +87,5 @@ fetch("https://api.github.com/users/racheldk", {
             console.log(data)
             //do a bunch of functions
         })
+
+        
