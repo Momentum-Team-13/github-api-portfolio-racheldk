@@ -6,7 +6,7 @@
 }
 
 .heading {
-    font-weight: bolder;
+    font-weight: 500;
     font: darkgrey;
     font-size: 2rem;
     flex-direction: row-reverse;
@@ -18,7 +18,7 @@
 }
 
 .contact {
-    font-weight: 300;
+    font-weight: 200;
     font: #555;
     font-size: 1rem;
 }

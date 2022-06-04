@@ -16,8 +16,8 @@ fetch("https://api.github.com/users/racheldk", {
     .then(function(data){
         console.log(data + "profile data received")
         //add functions here 
-        addName(data)
         addAvatar(data)
+        addName(data)
         addLocation(data)
         addGitUrl(data)
         addUserName(data)
