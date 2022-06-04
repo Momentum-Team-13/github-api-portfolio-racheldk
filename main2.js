@@ -3,6 +3,7 @@ const page = document.querySelector('#profile')
 const heading = document.querySelector('#heading')
 const contact = document.querySelector('#contact')
 const repoList = document.querySelector('#repo_list')
+const url = document.querySelector("#url")
 
 //fetch for profile data 
 fetch("https://api.github.com/users/racheldk", {
@@ -25,7 +26,7 @@ fetch("https://api.github.com/users/racheldk", {
     //function to add name to header
     function addName(data){
         let nameEl = document.createElement('h1')
-        nameEl.classList.add("f4")
+        nameEl.classList.add("heading")
         nameEl.innerText = `${data.name}`
         console.log("addName")
         heading.appendChild(nameEl)
@@ -34,7 +35,7 @@ fetch("https://api.github.com/users/racheldk", {
     //function to add avatar image to header
     function addAvatar(data) {
         let avatarEl = document.createElement('img')
-        avatarEl.classList.add("br-100", "h4", "w4", "dib")
+        avatarEl.classList.add("img")
         avatarEl.src = data.avatar_url
         avatarEl.alt = `${data.name}'s avatar`
         console.log("addAvatar")
@@ -44,7 +45,7 @@ fetch("https://api.github.com/users/racheldk", {
     //function to add location to contact 
     function addLocation(data) {
         let locationEl = document.createElement('p')
-        locationEl.classList.add("lh-copy", "measure", "center", "f6", "black-70")
+        locationEl.classList.add("contact")
         locationEl.innerText = `Location: ${data.location}`
         console.log("addLocation")
         contact.appendChild(locationEl)
@@ -53,17 +54,17 @@ fetch("https://api.github.com/users/racheldk", {
     //function to add GitHub url to contact 
     function addGitUrl(data) {
         let gitUrlEl = document.createElement('a')
-        gitUrlEl.classList.add("lh-copy", "measure", "center", "f6", "black-70")
-        gitUrlEl.innerText = `GitHub url: ${data.url}`
+        gitUrlEl.classList.add("contact")
+        gitUrlEl.innerText = `${data.url}`
         gitUrlEl.href = data.url
         console.log("addGitUrl")
-        contact.appendChild(gitUrlEl)
+        url.appendChild(gitUrlEl)
     }
     
     //function to GitHub username to contact 
     function addUserName(data) {
         let userNameEl = document.createElement('p')
-        userNameEl.classList.add("lh-copy", "measure", "center", "f6", "black-70")
+        userNameEl.classList.add("contact")
         userNameEl.innerText = `GitHub username: ${data.login}`
         console.log("addUserName")
         contact.appendChild(userNameEl)
@@ -96,10 +97,14 @@ function addRepo(repoData){
 }
 
 function makeRepoEl(repoName) {
+    let repoLi = document.createElement('p')
+    repoLi.classList.add("m10")
     let repoEl = document.createElement('a')
-    repoEl.classList.add("ph3", "pv3", "bb", "b--light-silver")
+    repoEl.classList.add("repo")
     repoEl.innerText = `${repoName}`
     repoEl.href = repoName
     console.log(repoName)
-    return repoEl
+    repoLi.appendChild(repoEl)
+    repoList.appendChild(repoLi)
+    return repoLi
 }
