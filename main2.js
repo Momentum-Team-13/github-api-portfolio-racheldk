@@ -55,8 +55,8 @@ fetch("https://api.github.com/users/racheldk", {
     function addGitUrl(data) {
         let gitUrlEl = document.createElement('a')
         gitUrlEl.classList.add("contact")
-        gitUrlEl.innerText = `${data.url}`
-        gitUrlEl.href = data.url
+        gitUrlEl.innerText = `${data.html_url}`
+        gitUrlEl.href = data.html_url
         console.log("addGitUrl")
         url.appendChild(gitUrlEl)
     }
